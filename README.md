@@ -9,3 +9,5 @@ To present run `yarn start`.
 ## Boilerplate
 
 There is also a [Chrome Extension Template repo](https://github.com/edrpls/chrome-extension-template) that you can use as a starting point to build Chrome Extensions.
+
+[Here is a sample Chrome Extension built with the template](https://github.com/edrpls/social-network-alert).
