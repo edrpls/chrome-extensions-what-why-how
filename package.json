@@ -3,16 +3,13 @@
     "mdx-deck": "^1.7.7"
   },
   "name": "chrome-extension-template-presentation",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "mdx-deck presentation.mdx"
   },
   "author": "",
   "license": "ISC",
-  "description": "",
-  "scripts": {
-    "start": "mdx-deck presentation.mdx"
-  }
+  "description": ""
 }
