@@ -165,7 +165,7 @@ export default Invert
 ```
 
 ```notes
-The `content_security_policy` section allows of blocks certain actions, for example, use of 'eval' is disallowed by default, but scripts compiled with some bundlers might need eval to be allowed.
+The `content_security_policy` section allows or blocks certain actions, for example, use of 'eval' is disallowed by default, but extensions compiled with some bundlers like webpack might need eval to work.
 
 Here we also specify what sources are allowed for our images, here we allow all.
 
@@ -179,7 +179,7 @@ At the bottom, we have a URL that specifies autoupdating, it is not necessary if
 
 Quick note on that, releasing an extension to the public requires the code to go through Google's review process, things like minification are not allowed by them, since it obfuscates the code and could hide the intent.
 
-Publishing an internal extension for an organization, like the Screenshots or Switcheroo Plus extensions, skips this process, meaning we can build anything inside the organization. EVEN SOMETHING EVIL.
+Publishing an internal extension for an organization, like the Screenshots or Switcheroo Plus extensions, avoid this process, meaning we can build anything inside the organization. EVEN SOMETHING EVIL.
 
 But I digress.
 ```
@@ -189,7 +189,7 @@ But I digress.
 
 Handles the extension's events, contains listeners for browser events that are relevant for the extension.
 
-Should be dormant until an event is fired.
+Should lie dormant until an event is fired.
 
 ```notes
 This script can communicate between different parts of the extension, for example, opening the popup may trigger a listener to fire a server request, then, user interaction with a button inserted to a page, could fire another request on the background script.
@@ -222,10 +222,12 @@ export default Split
 
 Extensions that read/write from/to web pages use a content script.
 
-This is the only script that executes in the context of the web page
+This is the only script that executes in the context of the web page.
+
+NO ACCESS TO WINDOW!
 
 ```notes
-This is the only script with access to the main object window.
+This is the only script with access to the active tab document, but not the window object.
 ```
 
 ---
@@ -244,7 +246,9 @@ We'll see how to send messages later.
 ---
 ## Architecture: Options Page
 
-The options page is an optional page that helps customizing the extension even further if it is relevant for the extension
+The options page allows customizing the extension even further if it is relevant for the extension.
+
+Allowing user input that can be persistent across pages and sessions.
 
 ```notes
 Not all extensions need of an Options page
@@ -266,7 +270,7 @@ chrome.tabs.query({'active': true}, function(tabs) {
 
 # Chrome APIs
 
-In addition to the APIs you normally use on a webpage, extensions can also use extension-specific APIs to extend interaction with the browser.
+In addition to the APIs you normally use on a webpage, extensions can also use extension-specific APIs to _extend_ interaction with the browser.
 
 Most Chrome APIs are asynchronous and receive a callback function to handle results.
 
@@ -290,7 +294,9 @@ backgroundWindow.someBackgroundFn();
 
 # Communication between pages
 
-Different parts of an extension can communicate with chrome.extension methods or by window messaging.
+Different parts of an extension can communicate either with `chrome.extension` methods or window messaging.
+
+Communication can be either short or long lived.
 
 ```notes
 This way we can access other window objects.
