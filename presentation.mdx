@@ -1,4 +1,8 @@
-export { swiss as theme } from 'mdx-deck/themes'
+import { Split } from 'mdx-deck/layouts'
+import { SplitRight } from 'mdx-deck/layouts'
+import { Invert } from 'mdx-deck/layouts'
+
+export { future as theme } from 'mdx-deck/themes'
 
 
 # Chrome Browser Extensions
@@ -10,9 +14,13 @@ Today we'll talk about what is a Chrome extension and why you may want to use th
 ```
 
 ---
-## What?
+export default Split
 
-A zip bundle of HTML, CSS, JS, etc used in the web browser to customize the browsing experience.
+![Wat](images/wat.gif "Wat")
+
+## What is an extension?
+
+A small zip bundle of HTML, CSS, JS, etc used in the web browser to customize the experience.
 
 ```notes
 Customize things like:
@@ -25,6 +33,10 @@ Dynamically display icons in the toolbar.
 ```
 
 ---
+export default SplitRight
+
+![Why](images/why.gif "Why?")
+
 ## Why?
 
 Extensions allow us to modify web content; to change or extend the behavior of a browser, webpage or webapp.
@@ -37,6 +49,11 @@ Set bookmarks, run global timers, save a page as HTML, access the Accessibility 
 
 ---
 # Architecture
+
+---
+export default SplitRight
+
+![Architecture](images/architecture.gif "Architecture")
 
 An extension's architecture will depend on its functionality. A robust extension will usually include:
 
@@ -52,6 +69,8 @@ Simpler extensions might skip different parts of this architecture, except for t
 ```
 
 ---
+export default Invert
+
 ## Architecture: manifest.json
 
 Specifies configurations and more:
@@ -69,6 +88,7 @@ This file can be seen as the configuration file, nothing happens without it bein
 
 ---
 ### manifest.json: Permissions
+export default Invert
 
 * On which URLs should the extension be loaded?
 * What scripts are allowed?
@@ -82,6 +102,8 @@ Permissions include: **see slide**
 ```
 
 ---
+export default Invert
+
 ### manifest.json: A real world example (pt 1)
 
 ```json
@@ -120,6 +142,8 @@ Files can be referred to by their relative path, or an absolute URL using the ex
 ```
 
 ---
+export default Invert
+
 ### manifest.json: A real world example (pt 2)
 
 ```json
@@ -174,13 +198,15 @@ Not all extensions need of a background script
 ```
 
 ---
+export default SplitRight
+
+![Popup Architecture](images/popuparc.png "Popup Architecture")
+
 ## Architecture: UI Elements
 
 The extension's User Interface, should be purposeful and minimal.
 
-Most extensions have browser or page actions, but they can contain other UI, like context menus, use of the omnibox or creating keyboard shortcuts.
-
-![Popup Architecture](images/popuparc.png "Popup Architecture")
+Most extensions have browser or page actions, but they can contain other UI, like context menus, use of the omnibox or create keyboard shortcuts or just customize page styles.
 
 ```notes
 Extension UI pages, like the popup can contain HTML and additional JavaScript logic, it can even be an application in itself.
@@ -188,26 +214,28 @@ The Screenshots extension was built using a 1KB framework called hyperapp, but i
 ```
 
 ---
-## Architecture: Content Scripts
-
-
-Extensions that read or write to web pages use a content script.
-
-This is the only script that executes in the context of the web page
+export default Split
 
 ![Content Script Architecture](images/contentscriptarc.png "Content Script Architecture")
+
+## Architecture: Content Scripts
+
+Extensions that read/write from/to web pages use a content script.
+
+This is the only script that executes in the context of the web page
 
 ```notes
 This is the only script with access to the main object window.
 ```
 
 ---
+export default SplitRight
+
+![Messaging Architecture](images/messagingarc.png "Messaging Architecture")
+
 ## Architecture: Content Scripts Messaging
 
 Content scripts communicate with the extension by exchanging messages and storing values using the storage API.
-
-
-![Messaging Architecture](images/messagingarc.png "Messaging Architecture")
 
 ```notes
 We'll see how to send messages later.
@@ -223,11 +251,7 @@ Not all extensions need of an Options page
 ```
 
 ---
-# Chrome APIs
-
-In addition to the APIs you normally use on a webpage, extensions can also use extension-specific APIs to extend interaction with the browser.
-
-Most Chrome APIs are asynchronous and receive a callback function to handle results.
+export default SplitRight
 
 ```javascript
 //THIS CODE DOESN'T WORK
@@ -240,14 +264,18 @@ chrome.tabs.query({'active': true}, function(tabs) {
 });
 ```
 
+# Chrome APIs
+
+In addition to the APIs you normally use on a webpage, extensions can also use extension-specific APIs to extend interaction with the browser.
+
+Most Chrome APIs are asynchronous and receive a callback function to handle results.
+
 ```notes
 I like to wrap these methods around a promise to have a more modern layer, but this is the main idea behind the async methods.
 ```
 
 ---
-# Communication between pages
-
-Different parts of an extension can communicate with chrome.extension methods or by window messaging.
+export default Split
 
 ```javascript
 // background.js
@@ -259,6 +287,10 @@ function someBackgroundFn () {
 const backgroundWindow = chrome.extension.getBackgroundPage();
 backgroundWindow.someBackgroundFn();
 ```
+
+# Communication between pages
+
+Different parts of an extension can communicate with chrome.extension methods or by window messaging.
 
 ```notes
 This way we can access other window objects.
@@ -343,3 +375,5 @@ This is not that different from how you would usually store data. There is a 5MB
 
 ---
 ### On to the demo...
+
+![Demo](images/demo.gif "Demo")
