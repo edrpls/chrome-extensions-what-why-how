@@ -217,7 +217,7 @@ chrome.runtime.onMessage.addListener(message => {
 }
 
 /* Send a message on extension runtime */
-const message = { code: "sendRequest };
+const message = { code: "sendRequest" };
 chrome.runtime.sendMessage(message);
 
 // background.js
