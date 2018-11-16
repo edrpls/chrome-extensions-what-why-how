@@ -1,8 +1,8 @@
 # Chrome Browser Extensions: An introduction
 
-This post aims to serve as a starting point for people who want to start building Chrome Extensions, it will help you learn what they are, why and how you may want to use them. It also comes with a [Chrome Extension Template](https://github.com/edrpls/chrome-extension-template) to get up you and running.
+This post aims to serve as a starting point for people who want to start building Chrome Extensions, it will help you learn what they are, why and how you may want to use them. It comes with a [Chrome Extension Template](https://github.com/edrpls/chrome-extension-template) to get you up and running.
 
-This post also exists also presentation form, as an effort of GumGum's JavaScript Guild, a group of coworkers who get together to discuss all things JavaScript.
+This post also exists in presentation form, as an effort of GumGum's JavaScript Guild, a group of coworkers who get together to discuss and share all things JavaScript.
 
 [YOUTUBE EMBED HERE]
 
