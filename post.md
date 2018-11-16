@@ -11,7 +11,7 @@ This post also exists in presentation form, as an effort of GumGum's JavaScript 
 A browser extension is a plug-in that allows the user to customize the browing experience.
 
 In the case of Chrome, these plug-ins are delivered as bundle in the form of a zip file with a `.crx` extension.
-They may contain HTML, CSS, and/or JS files, as well ass static assets like images, fonts, or other media.
+They may contain HTML, CSS, and/or JS files, as well as static assets like images, fonts, or other media.
 
 They must be explicitly installed and approved by the user.
 
@@ -32,6 +32,10 @@ A few examples of what extensions can do:
 - Adding items to Google Chrome's context menu.
 - Create a version of the New Tab, Bookmark, or History pages.
 - Dynamically display icons in the toolbar.
+
+At GumGum, we have created a few extensions for internal use to help speed up and improve some processes, for example, we have an extension that allows sales people (or pretty much anyone in the company) to load ads from our servers (or HTML) into any page that we can then screenshot and send to our clients.
+There is also an extension that intercepts a request to one of our most used scripts and instead loads a test version of your choice from any branch on our Bitbucket repo.
+Engineers (and even non tech people) come up with ideas like frequently to improve our internal processes.
 
 ## Architecture
 
@@ -128,7 +132,7 @@ Next we specify what resources should be accessible by the content scripts, in t
 
 This script can communicate between different parts of the extension, for example, opening a popup may trigger a listener to fire a server request. This script can listen for browser events that are relevant for the extension, and should lie dormant until an even activates it.
 
-Not all extensions need of a background script
+Not all extensions need a background script.
 
 ### UI Elements
 
@@ -294,7 +298,7 @@ Building a Chrome Extension is not that different from building other kinds of J
 
 Extensions have many different and varied applications, because of it, not all extensions need the same permissions, or even the same types of files. Some extensions can do things as simple as modifying page styles, others can be complex enough to be considered apps.
 
-While extensions provide open up a lot of posibilities to solve different problems, they are not without their drawbacks: the need for the user to install them into the browser and grant permissions, may put off some people, also, having to fulfill all of Google's [requirement's for publishing in the Chrome Store](https://developer.chrome.com/webstore/publish) can take time while waiting for reviews and the next iterationof the extension.
+While extensions provide open up a lot of posibilities to solve different problems, they are not without their drawbacks: the need for the user to install them into the browser and grant permissions, may put off some people, also, having to fulfill all of Google's [requirement's for publishing in the Chrome Store](https://developer.chrome.com/webstore/publish) can take time while waiting for reviews and the next iteration of the extension.
 
 Despite this, extensions have a place and are great to solve specific problems that JavaScript delivered through a site cannot.
 
